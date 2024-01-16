@@ -10,7 +10,7 @@ CSV.open("AdministrationsDomaineCulture.csv", 'w') do |csv|
   headers = ['Nom', 'Email', 'Code postal', 'Mission']
 
   departments = ['16', '24', '33', '31', '32', '64', '65', '79', '86']
-  key_words = ['culture', 'culturelle', 'culturel', 'art', 'communication', 'arts', 'bibliothèque', 'bibliothèques']
+  key_words = ['culture', 'culturelle', 'culturel', 'art', 'communication', 'arts', 'bibliothèque', 'bibliothèques', 'olympique', 'olympiques', 'sport', 'sports', 'sportif', 'sportive', 'flamme']
 
   data.each do |administration|
     if administration['adresse']
