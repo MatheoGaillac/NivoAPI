@@ -7,7 +7,7 @@ json_data = File.read(file_path)
 data = JSON.parse(json_data)
 
 CSV.open("AdministrationsDomaineCulture.csv", 'w') do |csv|
-  headers = ['Nom', 'Email', 'Code postal', 'Site', 'Mission']
+  headers = ['Nom', 'Email', 'Code postal', 'Mission']
 
   departments = ['16', '24', '33', '31', '32', '64', '65', '79', '86']
   key_words = ['culture', 'culturelle', 'culturel', 'art', 'communication', 'arts', 'bibliothèque', 'bibliothèques']
@@ -22,7 +22,7 @@ CSV.open("AdministrationsDomaineCulture.csv", 'w') do |csv|
       if administration['mission'] && code_postal
         email = administration['adresse_courriel']
         nom = administration['nom']
-        site = administration['site_internet']
+
         mission_words = administration['mission'].downcase.split(/\W+/)
         matching_keywords_mission = mission_words.select { |word| key_words.include?(word) }
 
@@ -31,7 +31,7 @@ CSV.open("AdministrationsDomaineCulture.csv", 'w') do |csv|
           matching_keywords_email = email_words.select { |word| key_words.include?(word) }
 
           if !matching_keywords_email.empty? || !matching_keywords_mission.empty?
-            csv << [nom, email, code_postal['code_postal'], site, administration['mission']]
+            csv << [nom, email, code_postal['code_postal'], administration['mission']]
           end
         end
       end
